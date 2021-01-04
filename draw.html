@@ -15,49 +15,30 @@
     var halfWidth = myCanvas.width / 2;
     ctx.translate(halfWidth, halfHeight);
 
-    function displayCircle(startLoc){
-      ctx.fillStyle = "white";
+    function displayCircle(startLoc, color){
+      ctx.fillStyle = 'white';
       ctx.fillRect(-halfWidth, -halfHeight, myCanvas.width, myCanvas.height)
 
+      ctx.strokeStyle = color;
       ctx.beginPath();
       ctx.arc(startLoc, 0, halfHeight, 0, 2 * Math.PI);
-      // ctx.fillStyle = 'black';
+      // ctx.fillStyle = color;
       ctx.stroke();
     }
 
     // Change color values at every tick
     let circleX = halfWidth;
+    let redV = 255
+    
     setInterval(() => {
-      displayCircle(circleX)
-      if (circleX >= -halfWidth) circleX--;
-
+      let color = `rgb(${redV}, ${255 - redV}, 0)`;
+      displayCircle(circleX, color)
+      if (circleX >= -halfWidth) {
+        circleX--
+        redV = redV - .2;
+      };
     }, 10);
 
-
-    // ctx.fillStyle = "#FF0000"; 
-    // ctx.moveTo(myCanvas.width / 2, 0);
-    // ctx.lineTo(myCanvas.width / 2, myCanvas.height);
-    // ctx.stroke(); 
-    // console.log(myCanvas.width)
-
-    // var myVar = setInterval(myTimer, 1000);
-    // setInterval(myTimer, 1000);
-
-    // function myTimer() {
-    //   let second = 0;
-    //   var d = new Date();
-    //   document.getElementById("myCanvas").innerHTML = d.toLocaleTimeString();
-    //   ctx.font = "30px Arial";
-    //   ctx.fillStyle = "#FFFFFF";
-    //   ctx.fillRect(0, 0, myCanvas.width, myCanvas.height)
-    //   ctx.fillStyle = "#000000";
-    //   ctx.fillText(`${d.toLocaleString()}`, 10, 50); 
-
-    // }
-
-    // ctx.beginPath();
-    // ctx.arc(myCanvas.width / 2, myCanvas.height / 2, myCanvas.height / 3, 0, 2 * Math.PI);
-    // ctx.stroke(); 
 
   </script> 
   
